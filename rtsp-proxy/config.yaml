@@ -1,7 +1,7 @@
 # config.yaml
 name: "RTSP Simple Proxy (mediamtx)"
 version: "1.0.1"
-slug: "rtsp_proxy"
+slug: "rtsp-proxy"
 description: "Un proxy simple pour vos flux de caméras RTSP."
 arch:
   - armv7
