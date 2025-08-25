@@ -20,5 +20,5 @@ options:
   cameras: []
 schema:
   cameras:
-    - name: "str?"
-    - url: "str?"
+    - name: "str"
+    - url: "str"
