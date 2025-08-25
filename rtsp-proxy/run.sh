@@ -35,5 +35,5 @@ bashio::log.info "Configuration générée. Démarrage du serveur mediamtx..."
 cat ${CONFIG_FILE}
 
 # Lancer le serveur mediamtx avec notre fichier de configuration
-exec /mediamtx ${CONFIG_FILE}
+exec /usr/local/bin/mediamtx ${CONFIG_FILE}
 
