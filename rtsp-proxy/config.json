@@ -25,7 +25,6 @@
       }
     ]
   },
-  "image": "bluenviron/mediamtx:latest",
   "boot": "auto",
   "startup_dependencies": []
 }
