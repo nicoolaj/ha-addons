@@ -1,13 +1,16 @@
 #!/usr/bin/with-contenv bashio
 
-# Créer le fichier de configuration pour mediamtx
+# Définir le chemin du fichier de configuration pour mediamtx
 CONFIG_FILE="/mediamtx.yml"
 
 bashio::log.info "Génération de la configuration pour mediamtx..."
 
-# Utiliser un heredoc pour créer le fichier de configuration YAML de base
+# Récupérer le port RTSP configuré par l'utilisateur
+RTSP_PORT=$(bashio::addon.port 8554)
+
+# Créer le fichier de configuration YAML de base
 cat > ${CONFIG_FILE} <<EOL
-rtspPort: 8554
+rtspPort: ${RTSP_PORT}
 api: yes
 webrtc: no
 paths:
