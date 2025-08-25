@@ -5,12 +5,13 @@ CONFIG_FILE="/mediamtx.yml"
 
 bashio::log.info "Génération de la configuration pour mediamtx..."
 
-# Début de la configuration de base
-# Tous les flux seront disponibles sur le port 8554
-echo "rtspPort: 8554" > ${CONFIG_FILE}
-echo "api: yes" >> ${CONFIG_FILE}
-echo "webrtc: no" >> ${CONFIG_FILE} # Désactivé pour simplifier
-echo "paths:" >> ${CONFIG_FILE}
+# Utiliser un heredoc pour créer le fichier de configuration YAML avec la bonne indentation
+cat > ${CONFIG_FILE} <<EOL
+rtspPort: 8554
+api: yes
+webrtc: no
+paths:
+EOL
 
 # Lire la liste des caméras depuis les options de l'add-on
 # et boucler dessus pour les ajouter à la configuration
@@ -24,9 +25,11 @@ for camera in $(bashio::config 'cameras|keys'); do
     # Ajouter la configuration pour cette caméra au fichier
     # Le nom est utilisé comme "path" (chemin)
     # ex: rtsp://<home-assistant-ip>:8554/jardin
-    echo "  ${NAME}:" >> ${CONFIG_FILE}
-    echo "    source: ${URL}" >> ${CONFIG_FILE}
-    echo "    sourceOnDemand: yes" >> ${CONFIG_FILE}
+    cat >> ${CONFIG_FILE} <<EOL
+  ${NAME}:
+    source: ${URL}
+    sourceOnDemand: yes
+EOL
 done
 
 bashio::log.info "Configuration générée. Démarrage du serveur mediamtx..."
