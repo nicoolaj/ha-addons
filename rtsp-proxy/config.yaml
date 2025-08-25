@@ -22,4 +22,3 @@ schema:
   cameras:
     - name: "string"
       url: "string"
-
