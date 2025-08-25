@@ -23,7 +23,6 @@ if bashio::config.has_value 'cameras'; then
             
             # Utiliser jq pour ajouter la nouvelle caméra à l'objet JSON
             PATHS_JSON=$(echo "$PATHS_JSON" | jq --arg name "$NAME" --arg url "$URL" '. + {($name): {"source": $url, "sourceOnDemand": true}}')
-
         else
             bashio::log.warn "Un élément de caméra n'a pas de nom ou d'URL. Il sera ignoré."
         fi
@@ -33,7 +32,7 @@ else
 fi
 
 # Créer la configuration finale en utilisant l'objet paths généré
-FINAL_CONFIG=$(jq -n --argjson rtspPort "$RTSP_PORT" --argjson paths "$PATHS_JSON" '{"rtspPort": $rtspPort, "api": true, "webrtc": false, "paths": $paths}')
+FINAL_CONFIG=$(jq -n --argjson paths "$PATHS_JSON" '{"api": true, "webrtc": false, "paths": $paths}')
 
 # Écrire la configuration finale dans le fichier
 echo "$FINAL_CONFIG" > "${CONFIG_FILE}"
