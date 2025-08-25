@@ -15,6 +15,7 @@ RUN apk update \
     && apk add --no-cache \
     wget \
     unzip \
+    jq \
     && rm -rf /var/cache/apk/*
 
 # Télécharger et installer Mediamtx
