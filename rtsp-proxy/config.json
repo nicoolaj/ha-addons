@@ -1,6 +1,6 @@
 {
   "name": "RTSP Simple Proxy (mediamtx)",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "slug": "rtsp-proxy",
   "description": "Un proxy simple pour vos flux de caméras RTSP.",
   "arch": ["armv7", "aarch64", "amd64"],
