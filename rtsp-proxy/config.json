@@ -1,0 +1,31 @@
+{
+  "name": "RTSP Simple Proxy (mediamtx)",
+  "version": "1.0.1",
+  "slug": "rtsp-proxy",
+  "description": "Un proxy simple pour vos flux de caméras RTSP.",
+  "arch": ["armv7", "aarch64", "amd64"],
+  "init": false,
+  "ports": {
+    "8554/tcp": 8554,    // Port principal du proxy RTSP
+    "8888/tcp": 8888     // Interface web / API (optionnel)
+  },
+  "ports_description": {
+    "8554/tcp": "Port principal du proxy RTSP",
+    "8888/tcp": "Interface web de mediamtx"
+  },
+  "map": ["addons:rw"],   // Mappe le répertoire /addons du conteneur (si besoin)
+  "options": {
+    "cameras": []
+  },
+  "schema": {
+    "cameras": [
+      {
+        "name": "str?",
+        "url": "str?"
+      }
+    ]
+  },
+  "image": "bluenviron/mediamtx:latest",   // ← à adapter à votre image
+  "boot": "auto",
+  "startup_dependencies": []
+}
