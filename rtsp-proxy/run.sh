@@ -22,7 +22,8 @@ if bashio::config.has_value 'cameras'; then
             bashio::log.info "Ajout de la caméra : ${NAME} (${URL})"
             
             # Utiliser jq pour ajouter la nouvelle caméra à l'objet JSON
-            PATHS_JSON=$(echo "$PATHS_JSON" | jq --arg name "$NAME" --arg url "$URL" '. + {($name): {"source": $url, "sourceOnDemand": "yes"}}')
+            PATHS_JSON=$(echo "$PATHS_JSON" | jq --arg name "$NAME" --arg url "$URL" '. + {($name): {"source": $url, "sourceOnDemand": true}}')
+
         else
             bashio::log.warn "Un élément de caméra n'a pas de nom ou d'URL. Il sera ignoré."
         fi
