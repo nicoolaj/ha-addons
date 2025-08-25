@@ -32,7 +32,7 @@ else
 fi
 
 # Créer la configuration finale en utilisant l'objet paths généré
-FINAL_CONFIG=$(jq -n --argjson rtspPort "$RTSP_PORT" --argjson paths "$PATHS_JSON" '{"rtspPort": $rtspPort, "api": "yes", "webrtc": "no", "paths": $paths}')
+FINAL_CONFIG=$(jq -n --argjson rtspPort "$RTSP_PORT" --argjson paths "$PATHS_JSON" '{"rtspPort": $rtspPort, "api": true, "webrtc": false, "paths": $paths}')
 
 # Écrire la configuration finale dans le fichier
 echo "$FINAL_CONFIG" > "${CONFIG_FILE}"
