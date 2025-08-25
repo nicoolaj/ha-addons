@@ -6,14 +6,14 @@
   "arch": ["armv7", "aarch64", "amd64"],
   "init": false,
   "ports": {
-    "8554/tcp": 8554,    // Port principal du proxy RTSP
-    "8888/tcp": 8888     // Interface web / API (optionnel)
+    "8554/tcp": 8554,
+    "8888/tcp": 8888
   },
   "ports_description": {
     "8554/tcp": "Port principal du proxy RTSP",
     "8888/tcp": "Interface web de mediamtx"
   },
-  "map": ["addons:rw"],   // Mappe le répertoire /addons du conteneur (si besoin)
+  "map": ["addons:rw"],
   "options": {
     "cameras": []
   },
@@ -25,7 +25,7 @@
       }
     ]
   },
-  "image": "bluenviron/mediamtx:latest",   // ← à adapter à votre image
+  "image": "bluenviron/mediamtx:latest",
   "boot": "auto",
   "startup_dependencies": []
 }
